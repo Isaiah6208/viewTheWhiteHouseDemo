@@ -1,0 +1,94 @@
+p.large 
+{
+  text-align: center;
+  font-size: 35px;
+  padding-top: 200px;
+}
+img.earthImage
+{
+  display: block;
+  margin: 0 auto;
+  width: 700px;
+  padding-bottom: 100px;
+}
+span.red
+{
+    color: red;
+}
+span.green
+{
+    color: green;
+}
+span.yellow
+{
+    color: yellow;
+}
+span.blue
+{
+    color: blue;
+}
+body
+{
+  background-color: #c9c9dd;
+  background-image: url("https://gallery.yopriceville.com/var/albums/Space/Dark_Blue_Space_Wallpaper_HD.jpg?m=1369782000");
+  background-blend-mode:overlay;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-right: 200px;
+  padding-left: 200px;
+}
+h1.earthTitle
+{
+  font-family: "Arial";
+  font-size: 140px;
+  text-shadow:5px 5px 10px rgba(90, 90, 92, 0.863);
+}
+h2.earthTitle
+{
+  font-family: "Arial";
+  font-size: 55px;
+  text-shadow:5px 5px 10px rgba(90, 90, 92, 0.863);
+}
+hr.intro
+{
+  box-shadow: 1px 1px #888888;
+}
+#map {
+    height: 1250px;
+    width: auto;
+}
+a.github
+{
+  font-family: "Arial";
+  background-color: rgb(12, 151, 12); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  border: 1px solid;
+  box-shadow: 5px 10px black;
+  width: 650px;
+  margin-top: auto;
+  margin-bottom: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  display:block;
+}
+a.github:hover 
+{
+  background-color: #3e8e41
+}
+a.github:active 
+{
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
