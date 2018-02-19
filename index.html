@@ -9,8 +9,9 @@
     <h1 class="earthTitle" align="center">Explore The World</h1>
     <h2 class="earthTitle" align="center">Using The <span class="blue">G</span>  <span class="red"> o</span>  <span class="yellow"> o </span> <span class="blue">g</span>  <span class="green">l</span> <span class="red">e</span> Maps API</h2>
  
-    <img class="earthImage" src="https://media.giphy.com/media/Wif2BJsS56nEk/source.gif">
-
+    <img class="earthImage" src="http://www.freepngimg.com/download/earth/4-2-earth-png-file.png">
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    
     <div id="map"></div>
 
     <script>
@@ -27,10 +28,77 @@
           position: whiteHouse,
           map: map
         });
+      // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() 
+        {
+        
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) 
+        {
+           return;
+        }
+
+        // Clear out the old markers.
+        markers.forEach(function(marker) {
+        marker.setMap(null);
+        });
+        markers = [];
+
+        // For each place, get the icon, name and location.
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function(place) {
+        if (!place.geometry) 
+        {
+        console.log("Returned place contains no geometry");
+        return;
+        }
+        var icon = 
+        {
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25)
+        };
+
+        // Create a marker for each place.
+        markers.push(new google.maps.Marker(
+        {
+          map: map,
+          icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) 
+        {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } 
+          else 
+            {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlMDkaKEwqFdwc0Oio9L6G1dbS3yiNkt8&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlMDkaKEwqFdwc0Oio9L6G1dbS3yiNkt8&callback=initMap&libraries=places">
     </script>
 
     <p class="large">&nbsp</p>
