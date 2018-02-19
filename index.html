@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View the world</title>
+  <link rel="stylesheet" type="text/css" href="googleAppStyle.css">    
+</head>
+<body>
+    <h1 class="earthTitle" align="center">Explore The World</h1>
+    <h2 class="earthTitle" align="center">Using The <span class="blue">G</span>  <span class="red"> o</span>  <span class="yellow"> o </span> <span class="blue">g</span>  <span class="green">l</span> <span class="red">e</span> Maps API</h2>
+ 
+    <img class="earthImage" src="https://media.giphy.com/media/Wif2BJsS56nEk/source.gif">
+
+    <div id="map"></div>
+
+    <script>
+      function initMap() 
+      {
+        var whiteHouse = {lat: 38.8977, lng: -77.0365};
+        var map = new google.maps.Map(document.getElementById('map'), 
+        {
+          zoom: 4,
+          center: whiteHouse
+        });
+        var marker = new google.maps.Marker(
+        {
+          position: whiteHouse,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlMDkaKEwqFdwc0Oio9L6G1dbS3yiNkt8&callback=initMap">
+    </script>
+
+    <p class="large">&nbsp</p>
+
+    
+    <a href="https://github.com/Isaiah6208 " target="_blank" class="github">GitHub Page</a>
+</body>
+</html>
